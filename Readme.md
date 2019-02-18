@@ -1,7 +1,7 @@
 # Личный проект «Большое путешествие» [![Build status][travis-image]][travis-url]
 
 * Студент: [Игорь Ильягуев](https://up.htmlacademy.ru/ecmascript/8/user/870405).
-* Наставник: `Неизвестно`.
+* Наставник: [Александр Тимоновский](https://up.htmlacademy.ru/ecmascript/8/user/768125).
 
 ---
 

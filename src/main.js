@@ -7,7 +7,7 @@ import {
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
-  WAYPOINT_OFFER_LIST
+  getOfferList
 } from './data.js';
 import {
   getRandomValueRange
@@ -43,7 +43,7 @@ const generateWaypoints = (pointsNumber) => {
       time: WAYPOINT_TIME_LIST[getRandomValueRange(0, WAYPOINT_TIME_LIST.length - 1)],
       duration: WAYPOINT_DURATION_LIST[getRandomValueRange(0, WAYPOINT_DURATION_LIST.length - 1)],
       price: WAYPOINT_PRICE_LIST[getRandomValueRange(0, WAYPOINT_PRICE_LIST.length - 1)],
-      offer: WAYPOINT_OFFER_LIST[getRandomValueRange(0, WAYPOINT_OFFER_LIST.length - 1)],
+      offers: getOfferList()
     });
   }
   wayPointsElem.innerHTML = waypointsHtml;

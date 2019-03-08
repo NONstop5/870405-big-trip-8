@@ -1,17 +1,24 @@
 /**
- * Отрисовка маршрута
- * @param {object} waypointSettings
- * @return {string}
+ * Генерирует html-код оферов
+ * @param {array} offerList
+ * @return {array}
  */
-export default (waypointSettings) => {
-  const offersBlock = waypointSettings.offer.reduce((resultHtml, offerItem) => {
+const getOffersHtml = (offerList) => {
+  return offerList.reduce((resultHtml, offerItem) => {
     return resultHtml + `
       <li>
         <button class="trip-point__offer">${offerItem}</button>
       </li>
     `;
   }, ``);
+};
 
+/**
+ * Отрисовка маршрута
+ * @param {object} waypointSettings
+ * @return {string}
+ */
+export default (waypointSettings) => {
   return `
     <article class="trip-point">
       <i class="trip-icon">${waypointSettings.type.icon}</i>
@@ -22,7 +29,7 @@ export default (waypointSettings) => {
       </p>
       <p class="trip-point__price">&euro;&nbsp;${waypointSettings.price}</p>
       <ul class="trip-point__offers">
-      ${offersBlock}
+      ${getOffersHtml(waypointSettings.offers)}
       </ul>
     </article>
   `;

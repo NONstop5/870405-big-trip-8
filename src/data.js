@@ -1,3 +1,7 @@
+import {
+  getRandomValueRange
+} from './utils.js';
+
 // Список фильтров
 const FILTER_NAME_LIST = [
   `everything`,
@@ -85,21 +89,22 @@ const WAYPOINT_PRICE_LIST = [
 
 // Список предложений
 const WAYPOINT_OFFER_LIST = [
-  [
-    `Order UBER +&euro;&nbsp;20`,
-    `Upgrade to business +&euro;&nbsp;20`
-  ],
-  [
-    `Upgrade to business +&euro;&nbsp;20`,
-    `Rent a car +&euro;&nbsp;200`
-  ],
-  [
-    `Rent a car +&euro;&nbsp;200`
-  ],
-  [
-    `Rent a car +&euro;&nbsp;200`
-  ]
+  `Add luggage`,
+  `Switch to comfort class`,
+  `Add meal`,
+  `Choose seats`
 ];
+
+
+const getOfferList = () => {
+  const offersCount = getRandomValueRange(0, 2);
+  let offerList = [];
+  for (let i = 1; i <= offersCount; i++) {
+    offerList.push(WAYPOINT_OFFER_LIST[getRandomValueRange(0, WAYPOINT_OFFER_LIST.length - 1)]);
+  }
+
+  return offerList;
+};
 
 export {
   FILTER_NAME_LIST,
@@ -108,5 +113,6 @@ export {
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
-  WAYPOINT_OFFER_LIST
+  WAYPOINT_OFFER_LIST,
+  getOfferList
 };

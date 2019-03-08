@@ -14,8 +14,8 @@ export default (waypointSettings) => {
 
   return `
     <article class="trip-point">
-      <i class="trip-icon">${waypointSettings.icon}</i>
-      <h3 class="trip-point__title">${waypointSettings.name}</h3>
+      <i class="trip-icon">${waypointSettings.type.icon}</i>
+      <h3 class="trip-point__title">${waypointSettings.type.name} to ${waypointSettings.destination}</h3>
       <p class="trip-point__schedule">
         <span class="trip-point__timetable">${waypointSettings.time}</span>
         <span class="trip-point__duration">${waypointSettings.duration}</span>

@@ -5,26 +5,58 @@ const FILTER_NAME_LIST = [
   `past`
 ];
 
-// Список иконок маршрутов
-const WAYPOINT_ICON_LIST = [
-  `🚕`,
-  `🚌`,
-  `🚂`,
-  `🛳️`,
-  `🚊`,
-  `🚗`,
-  `✈️`,
-  `🏨`,
-  `🏛️`,
-  `🍴`,
+// Список типов маршрутов
+const WAYPOINT_TYPE_LIST = [
+  {
+    name: `Taxi`,
+    icon: `🚕`
+  },
+  {
+    name: `Bus`,
+    icon: `🚌`
+  },
+  {
+    name: `Train`,
+    icon: `🚂`
+  },
+  {
+    name: `Ship`,
+    icon: `🛳️`
+  },
+  {
+    name: `Transport`,
+    icon: `🚊`
+  },
+  {
+    name: `Drive`,
+    icon: `🚗`
+  },
+  {
+    name: `Flight`,
+    icon: `✈️`
+  },
+  {
+    name: `Check-in`,
+    icon: `🏨`
+  },
+  {
+    name: `Sightseeing`,
+    icon: `🏛️`
+  },
+  {
+    name: `Restaurant`,
+    icon: `🍴`
+  }
 ];
 
 // Список имен маршрутов
-const WAYPOINT_NAME_LIST = [
-  `Taxi to Airport`,
-  `Flight to Geneva`,
-  `Drive to Chamonix`,
-  `Check into a hotel`
+const WAYPOINT_DESTINATION_LIST = [
+  `Airport`,
+  `Geneva`,
+  `Chamonix`,
+  `hotel`,
+  `London`,
+  `New York`
 ];
 
 // Список времени маршрутов
@@ -71,8 +103,8 @@ const WAYPOINT_OFFER_LIST = [
 
 export {
   FILTER_NAME_LIST,
-  WAYPOINT_ICON_LIST,
-  WAYPOINT_NAME_LIST,
+  WAYPOINT_TYPE_LIST,
+  WAYPOINT_DESTINATION_LIST,
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,

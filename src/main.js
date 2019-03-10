@@ -1,15 +1,18 @@
-import {getRandomValueRange} from './utils.js';
+import createFilterItem from './create-filter.js';
+import createWaypointItem from './create-waypoint.js';
 import {
   FILTER_NAME_LIST,
-  WAYPOINT_ICON_LIST,
-  WAYPOINT_NAME_LIST,
+  WAYPOINT_TYPE_LIST,
+  WAYPOINT_DESTINATION_LIST,
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
-  WAYPOINT_OFFER_LIST
+  getTextList,
+  getOfferList
 } from './data.js';
-import createFilterItem from './create-filter.js';
-import createWaypointItem from './create-waypoint.js';
+import {
+  getRandomValueRange
+} from './utils.js';
 
 const tripFilterElem = document.querySelector(`.trip-filter`);
 const wayPointsElem = document.querySelector(`.trip-day__items`);
@@ -31,13 +34,19 @@ const generateFilters = (filterList) => {
 const generateWaypoints = (pointsNumber) => {
   let waypointsHtml = ``;
   for (let i = 1; i <= pointsNumber; i++) {
+    let type = WAYPOINT_TYPE_LIST[getRandomValueRange(0, WAYPOINT_TYPE_LIST.length - 1)];
     waypointsHtml += createWaypointItem({
-      icon: WAYPOINT_ICON_LIST[getRandomValueRange(0, WAYPOINT_ICON_LIST.length - 1)],
-      name: WAYPOINT_NAME_LIST[getRandomValueRange(0, WAYPOINT_NAME_LIST.length - 1)],
+      type: {
+        name: type.name,
+        icon: type.icon
+      },
+      destination: WAYPOINT_DESTINATION_LIST[getRandomValueRange(0, WAYPOINT_DESTINATION_LIST.length - 1)],
       time: WAYPOINT_TIME_LIST[getRandomValueRange(0, WAYPOINT_TIME_LIST.length - 1)],
       duration: WAYPOINT_DURATION_LIST[getRandomValueRange(0, WAYPOINT_DURATION_LIST.length - 1)],
       price: WAYPOINT_PRICE_LIST[getRandomValueRange(0, WAYPOINT_PRICE_LIST.length - 1)],
-      offer: WAYPOINT_OFFER_LIST[getRandomValueRange(0, WAYPOINT_OFFER_LIST.length - 1)],
+      photo: `http://picsum.photos/300/150?r=${Math.random()}`,
+      offers: getOfferList(),
+      text: getTextList()
     });
   }
   wayPointsElem.innerHTML = waypointsHtml;

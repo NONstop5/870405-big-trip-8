@@ -1,3 +1,7 @@
+import {
+  getRandomValueRange
+} from './utils.js';
+
 // Список фильтров
 const FILTER_NAME_LIST = [
   `everything`,
@@ -5,26 +9,58 @@ const FILTER_NAME_LIST = [
   `past`
 ];
 
-// Список иконок маршрутов
-const WAYPOINT_ICON_LIST = [
-  `🚕`,
-  `🚌`,
-  `🚂`,
-  `🛳️`,
-  `🚊`,
-  `🚗`,
-  `✈️`,
-  `🏨`,
-  `🏛️`,
-  `🍴`,
+// Список типов маршрутов
+const WAYPOINT_TYPE_LIST = [
+  {
+    name: `Taxi`,
+    icon: `🚕`
+  },
+  {
+    name: `Bus`,
+    icon: `🚌`
+  },
+  {
+    name: `Train`,
+    icon: `🚂`
+  },
+  {
+    name: `Ship`,
+    icon: `🛳️`
+  },
+  {
+    name: `Transport`,
+    icon: `🚊`
+  },
+  {
+    name: `Drive`,
+    icon: `🚗`
+  },
+  {
+    name: `Flight`,
+    icon: `✈️`
+  },
+  {
+    name: `Check-in`,
+    icon: `🏨`
+  },
+  {
+    name: `Sightseeing`,
+    icon: `🏛️`
+  },
+  {
+    name: `Restaurant`,
+    icon: `🍴`
+  }
 ];
 
 // Список имен маршрутов
-const WAYPOINT_NAME_LIST = [
-  `Taxi to Airport`,
-  `Flight to Geneva`,
-  `Drive to Chamonix`,
-  `Check into a hotel`
+const WAYPOINT_DESTINATION_LIST = [
+  `Airport`,
+  `Geneva`,
+  `Chamonix`,
+  `hotel`,
+  `London`,
+  `New York`
 ];
 
 // Список времени маршрутов
@@ -53,28 +89,63 @@ const WAYPOINT_PRICE_LIST = [
 
 // Список предложений
 const WAYPOINT_OFFER_LIST = [
-  [
-    `Order UBER +&euro;&nbsp;20`,
-    `Upgrade to business +&euro;&nbsp;20`
-  ],
-  [
-    `Upgrade to business +&euro;&nbsp;20`,
-    `Rent a car +&euro;&nbsp;200`
-  ],
-  [
-    `Rent a car +&euro;&nbsp;200`
-  ],
-  [
-    `Rent a car +&euro;&nbsp;200`
-  ]
+  `Add luggage`,
+  `Switch to comfort class`,
+  `Add meal`,
+  `Choose seats`
 ];
+
+// Список текстовых предложений
+const WAYPOINT_TEXT_LIST = [
+  `Lorem ipsum dolor sit amet,consectetur adipiscing elit.`,
+  `Cras aliquet varius magna, non porta ligula feugiat eget.`,
+  `Fusce tristique felis at fermentum pharetra.`,
+  `Aliquam id orci ut lectus varius viverra.`,
+  `Nullam nunc ex, convallis sed finibus eget, sollicitudin eget ante.`,
+  `Phasellus eros mauris, condimentum sed nibh vitae, sodales efficitur ipsum.`,
+  `Sed blandit, eros vel aliquam faucibus, purus ex euismod diam, eu luctus nunc ante ut dui.`,
+  `Sed sed nisi sed augue convallis suscipit in sed felis.`,
+  `Aliquam erat volutpat.`,
+  `Nunc fermentum tortor ac porta dapibus.`,
+  `In rutrum ac purus sit amet tempus.`
+];
+
+/**
+ * Генерирует и возвращает массив оферов
+ * @return {array}
+ */
+const getOfferList = () => {
+  const offersCount = getRandomValueRange(0, 2);
+  let offerList = [];
+  for (let i = 1; i <= offersCount; i++) {
+    offerList.push(WAYPOINT_OFFER_LIST[getRandomValueRange(0, WAYPOINT_OFFER_LIST.length - 1)]);
+  }
+
+  return offerList;
+};
+
+/**
+ * Генерирует и возвращает массив текстовых предложений
+ * @return {array}
+ */
+const getTextList = () => {
+  const textsCount = getRandomValueRange(1, 3);
+  let textList = [];
+  for (let i = 1; i <= textsCount; i++) {
+    textList.push(WAYPOINT_TEXT_LIST[getRandomValueRange(0, WAYPOINT_TEXT_LIST.length - 1)]);
+  }
+
+  return textList;
+};
 
 export {
   FILTER_NAME_LIST,
-  WAYPOINT_ICON_LIST,
-  WAYPOINT_NAME_LIST,
+  WAYPOINT_TYPE_LIST,
+  WAYPOINT_DESTINATION_LIST,
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
-  WAYPOINT_OFFER_LIST
+  WAYPOINT_OFFER_LIST,
+  getTextList,
+  getOfferList
 };

@@ -7,6 +7,7 @@ import {
   WAYPOINT_TIME_LIST,
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
+  getTextList,
   getOfferList
 } from './data.js';
 import {
@@ -43,7 +44,9 @@ const generateWaypoints = (pointsNumber) => {
       time: WAYPOINT_TIME_LIST[getRandomValueRange(0, WAYPOINT_TIME_LIST.length - 1)],
       duration: WAYPOINT_DURATION_LIST[getRandomValueRange(0, WAYPOINT_DURATION_LIST.length - 1)],
       price: WAYPOINT_PRICE_LIST[getRandomValueRange(0, WAYPOINT_PRICE_LIST.length - 1)],
-      offers: getOfferList()
+      photo: `http://picsum.photos/300/150?r=${Math.random()}`,
+      offers: getOfferList(),
+      text: getTextList()
     });
   }
   wayPointsElem.innerHTML = waypointsHtml;

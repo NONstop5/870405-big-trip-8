@@ -95,9 +95,8 @@ const WAYPOINT_OFFER_LIST = [
   `Choose seats`
 ];
 
-/*
 // Список текстовых предложений
-const WAYPOINT_TEXT = [
+const WAYPOINT_TEXT_LIST = [
   `Lorem ipsum dolor sit amet,consectetur adipiscing elit.`,
   `Cras aliquet varius magna, non porta ligula feugiat eget.`,
   `Fusce tristique felis at fermentum pharetra.`,
@@ -110,8 +109,11 @@ const WAYPOINT_TEXT = [
   `Nunc fermentum tortor ac porta dapibus.`,
   `In rutrum ac purus sit amet tempus.`
 ];
-*/
 
+/**
+ * Генерирует и возвращает массив оферов
+ * @return {array}
+ */
 const getOfferList = () => {
   const offersCount = getRandomValueRange(0, 2);
   let offerList = [];
@@ -122,6 +124,20 @@ const getOfferList = () => {
   return offerList;
 };
 
+/**
+ * Генерирует и возвращает массив тексовых предложений
+ * @return {array}
+ */
+const getTextList = () => {
+  const textsCount = getRandomValueRange(1, 3);
+  let textList = [];
+  for (let i = 1; i <= textsCount; i++) {
+    textList.push(WAYPOINT_TEXT_LIST[getRandomValueRange(0, WAYPOINT_TEXT_LIST.length - 1)]);
+  }
+
+  return textList;
+};
+
 export {
   FILTER_NAME_LIST,
   WAYPOINT_TYPE_LIST,
@@ -130,5 +146,6 @@ export {
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
   WAYPOINT_OFFER_LIST,
+  getTextList,
   getOfferList
 };

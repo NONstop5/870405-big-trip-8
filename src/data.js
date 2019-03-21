@@ -138,6 +138,20 @@ const getTextList = () => {
   return textList;
 };
 
+/**
+ * Генерирует и возвращает массив фотографий
+ * @return {array}
+ */
+const getPhotoList = () => {
+  const photoCount = getRandomValueRange(3, 5);
+  let photoList = [];
+  for (let i = 1; i <= photoCount; i++) {
+    photoList.push(`http://picsum.photos/300/150?r=${Math.random()}`);
+  }
+
+  return photoList;
+};
+
 export {
   FILTER_NAME_LIST,
   WAYPOINT_TYPE_LIST,
@@ -146,6 +160,7 @@ export {
   WAYPOINT_DURATION_LIST,
   WAYPOINT_PRICE_LIST,
   WAYPOINT_OFFER_LIST,
-  getTextList,
-  getOfferList
+  getPhotoList,
+  getOfferList,
+  getTextList
 };

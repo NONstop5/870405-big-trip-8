@@ -1,5 +1,8 @@
-class Waypoint {
+import {Component} from "./сomponent";
+
+class Waypoint extends Component {
   constructor(data) {
+    super();
     this._type = data.type;
     this._destination = data.destination;
     this._time = data.time;
@@ -8,9 +11,9 @@ class Waypoint {
     this._photo = data.photo;
     this._offers = data.offers;
     this._text = data.text;
-    this._element = null;
 
     this._onClick = null;
+    this._onWaypointClick = this._onWaypointClick.bind(this);
   }
 
   /**
@@ -40,7 +43,7 @@ class Waypoint {
   }
 
   /**
-   * Отрисовка маршрута
+   * Получаем шаблон элемента
    * @return {string}
    */
   get template() {
@@ -66,10 +69,6 @@ class Waypoint {
     }
   }
 
-  get element() {
-    return this._element;
-  }
-
   set onClick(fn) {
     this._onClick = fn;
   }
@@ -78,31 +77,14 @@ class Waypoint {
    * Создаем обработчики событий
    */
   addEvents() {
-    this._element.addEventListener(`click`, this._onWaypointClick.bind(this));
-  }
-
-  removeEvents() {
-    this._element.removeEventListener(`click`, this._onWaypointClick.bind(this));
+    this._element.addEventListener(`click`, this._onWaypointClick);
   }
 
   /**
-   * Отрисовка задачи в заданном элементе
-   * @return {link}
+   * Удаляем обработчики событий
    */
-  render() {
-    this._element = null || document.createElement(`div`);
-
-    this._element.innerHTML = this.template;
-    this._element = this._element.firstElementChild;
-
-    this.addEvents();
-
-    return this._element;
-  }
-
-  unrender() {
-    this.removeEvents();
-    this._element = null;
+  removeEvents() {
+    this._element.removeEventListener(`click`, this._onWaypointClick);
   }
 }
 

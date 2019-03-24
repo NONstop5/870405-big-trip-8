@@ -38,8 +38,7 @@ const generateFilters = (filterList) => {
  */
 const addFiltersEvents = () => {
   tripFilterElem.addEventListener(`click`, () => {
-    waypointsElem.innerHTML = ``;
-    generateWaypoints(getRandomValueRange(0, 7));
+    generateWaypoints(waypointsElem, getRandomValueRange(0, 7));
   });
 };
 

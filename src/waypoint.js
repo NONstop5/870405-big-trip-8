@@ -1,14 +1,49 @@
-import {WaypointComponent} from "./waypointComponent";
+import {Component} from "./сomponent";
 
-class Waypoint extends WaypointComponent {
+class Waypoint extends Component {
   constructor(data) {
-    super(data);
+    super();
+    this._type = data.type;
+    this._destination = data.destination;
+    this._time = data.time;
+    this._duration = data.duration;
+    this._price = data.price;
+    this._photo = data.photo;
+    this._offers = data.offers;
+    this._text = data.text;
 
     this._onClick = null;
+    this._onWaypointClick = this._onWaypointClick.bind(this);
   }
 
   /**
-   * Отрисовка маршрута
+   * Генерирует html-код оферов
+   * @param {array} offerList
+   * @return {array}
+   */
+  _generateOffersHtml(offerList) {
+    return offerList.reduce((resultHtml, offerItem) => {
+      return resultHtml + `
+      <li>
+        <button class="trip-point__offer">${offerItem}</button>
+      </li>
+    `;
+    }, ``);
+  }
+
+  /**
+   * Генерирует html - код текстовых предложений
+   * @param {array} textList
+   * @return {string}
+   */
+  _generateTextHtml(textList) {
+    return textList.reduce((resultHtml, textItem) => {
+      return resultHtml + `${textItem}<br>`;
+    }, ``);
+  }
+
+  /**
+   * Получаем шаблон элемента
    * @return {string}
    */
   get template() {
@@ -42,11 +77,14 @@ class Waypoint extends WaypointComponent {
    * Создаем обработчики событий
    */
   addEvents() {
-    this._element.addEventListener(`click`, this._onWaypointClick.bind(this));
+    this._element.addEventListener(`click`, this._onWaypointClick);
   }
 
+  /**
+   * Удаляем обработчики событий
+   */
   removeEvents() {
-    this._element.removeEventListener(`click`, this._onWaypointClick.bind(this));
+    this._element.removeEventListener(`click`, this._onWaypointClick);
   }
 }
 

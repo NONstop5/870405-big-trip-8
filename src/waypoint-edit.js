@@ -1,12 +1,48 @@
-import {WaypointComponent} from "./waypointComponent";
+import {Component} from "./сomponent";
 
-class WaypointEdit extends WaypointComponent {
+class WaypointEdit extends Component {
   constructor(data) {
-    super(data);
+    super();
+    this._type = data.type;
     this._typeList = data.typeList;
+    this._destination = data.destination;
+    this._time = data.time;
+    this._duration = data.duration;
+    this._price = data.price;
+    this._photo = data.photo;
+    this._offers = data.offers;
+    this._text = data.text;
 
     this._onSubmit = null;
     this._onReset = null;
+    this._onWaypointSubmit = this._onWaypointSubmit.bind(this);
+    this._onWaypointReset = this._onWaypointReset.bind(this);
+  }
+
+  /**
+   * Генерирует html-код оферов
+   * @param {array} offerList
+   * @return {array}
+   */
+  _generateOffersHtml(offerList) {
+    return offerList.reduce((resultHtml, offerItem) => {
+      return resultHtml + `
+      <li>
+        <button class="trip-point__offer">${offerItem}</button>
+      </li>
+    `;
+    }, ``);
+  }
+
+  /**
+   * Генерирует html - код текстовых предложений
+   * @param {array} textList
+   * @return {string}
+   */
+  _generateTextHtml(textList) {
+    return textList.reduce((resultHtml, textItem) => {
+      return resultHtml + `${textItem}<br>`;
+    }, ``);
   }
 
   /**
@@ -36,7 +72,7 @@ class WaypointEdit extends WaypointComponent {
   }
 
   /**
-   * Отрисовка маршрута
+   * Получаем шаблон элемента
    * @return {string}
    */
   get template() {
@@ -169,15 +205,18 @@ class WaypointEdit extends WaypointComponent {
   addEvents() {
     const pointBtnSubmitElem = this._element.querySelector(`.point__button--save`);
     const pointBtnResetElem = this._element.querySelector(`[type="reset"]`);
-    pointBtnSubmitElem.addEventListener(`click`, this._onWaypointSubmit.bind(this));
-    pointBtnResetElem.addEventListener(`click`, this._onWaypointReset.bind(this));
+    pointBtnSubmitElem.addEventListener(`click`, this._onWaypointSubmit);
+    pointBtnResetElem.addEventListener(`click`, this._onWaypointReset);
   }
 
+  /**
+   * Удаляем обработчики событий
+   */
   removeEvents() {
     const pointBtnSubmitElem = this._element.querySelector(`.point__button--save`);
     const pointBtnResetElem = this._element.querySelector(`[type="reset"]`);
-    pointBtnSubmitElem.removeEventListener(`click`, this._onWaypointSubmit.bind(this));
-    pointBtnResetElem.removeEventListener(`click`, this._onWaypointReset.bind(this));
+    pointBtnSubmitElem.removeEventListener(`click`, this._onWaypointSubmit);
+    pointBtnResetElem.removeEventListener(`click`, this._onWaypointReset);
   }
 }
 

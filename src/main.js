@@ -1,4 +1,4 @@
-import createFilterItem from './create-filter.js';
+import createFilterItem from './create-filter';
 import {
   FILTER_NAME_LIST,
   WAYPOINT_TYPE_LIST,
@@ -9,16 +9,16 @@ import {
   getPhotoList,
   getOfferList,
   getTextList
-} from './data.js';
+} from './data';
 import {
   getRandomValueRange
-} from './utils.js';
+} from './utils';
 import {
   Waypoint
-} from './waypoint.js';
+} from './waypoint';
 import {
   WaypointEdit
-} from './waypoint-edit.js';
+} from './waypoint-edit';
 
 const tripFilterElem = document.querySelector(`.trip-filter`);
 const waypointsElem = document.querySelector(`.trip-day__items`);

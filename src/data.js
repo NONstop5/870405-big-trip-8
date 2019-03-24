@@ -1,6 +1,6 @@
 import {
   getRandomValueRange
-} from './utils.js';
+} from './utils';
 
 // Список фильтров
 const FILTER_NAME_LIST = [
